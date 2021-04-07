@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../shared/service/data.service';
-
+import { orderBy } from 'lodash';
 
 @Component({
   selector: 'app-goods-list',
@@ -14,10 +14,13 @@ export class GoodsListComponent implements OnInit {
   ngOnInit(): void {
     this.dataService.getGoods()
       .subscribe( x => {
-        
+        x =  orderBy(x, 'name', 'asc');
         return this.items = x
       });   
   }
- 
+  onSort(event){
+    let field = event.target.value;
+    this.items = orderBy(this.items, field, 'asc');
+  }
 
 }
