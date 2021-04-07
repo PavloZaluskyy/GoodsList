@@ -1,0 +1,16 @@
+<div class="row col s12 filter">
+  <button class="waves-effect waves-light btn-large"> Add new</button>
+  <div class="select col s3">
+    <label>Sort for</label>
+    <select  class="browser-default">
+      <option value="name">Name</option>
+      <option value="count">Count</option>
+    </select>
+  </div>
+  
+</div>
+<ul>
+  <li *ngFor="let item of items">
+    <app-product [product]="item"></app-product>
+  </li>
+</ul>

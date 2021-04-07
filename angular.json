@@ -121,8 +121,16 @@
               "devServerTarget": "GoodsList:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
         }
       }
-    }},
-  "defaultProject": "GoodsList"
+    }
+  },
+  "defaultProject": "GoodsList",
+  "cli": {
+    "analytics": "8b94570b-d252-4886-9c5d-4b58a3b78d6f"
+  }
 }

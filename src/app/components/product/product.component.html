@@ -1,0 +1,25 @@
+<div class="row">
+    <div class="col s12">
+      <div class="card">
+          <img [src]="product.imageUrl">
+          
+        <div class="card-content">
+          <span class="card-title">{{product.name}}</span>
+          <p >{{product.description}}</p>
+          <div class="details">
+            <span>Count: {{product.count}}</span>
+            <span>Size: {{product.size.width}} , {{product.size.height}}</span>
+            <span>Weight: {{product.weight}}</span>
+          </div>
+          <div class="buttons">
+            <button class="waves-effect waves-light btn-large" >More Details</button>
+            <button class="waves-effect waves-light btn-large delete" >Delete</button>
+          </div>
+          
+        </div>
+      
+          
+
+      </div>
+    </div>
+  </div>
