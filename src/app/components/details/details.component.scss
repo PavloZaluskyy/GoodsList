@@ -1,0 +1,20 @@
+img{
+    margin: 4rem 0;
+}
+header{
+    margin-top: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;  
+    .btn-large{
+        background-color: transparent;
+        color: #000;
+        border: 1px solid #000;
+        transition: all .9s ease;
+        &:hover{
+            background-color: #000;
+            color: #fff;
+            border: 1px solid #fff;
+        }
+    }
+}

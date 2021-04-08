@@ -11,6 +11,9 @@ export class ProductComponent implements OnInit {
   @Input() product: Product;
   @Output() deleteProduct = new EventEmitter<Product>();
   constructor( private detailsService: DetailsService ) { }
+  chooseProduct(){
+    this.detailsService.chooseProduct = this.product;
+  }
   delete(increased:Product){
     this.deleteProduct.emit(increased);
   }
