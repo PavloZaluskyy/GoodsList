@@ -11,9 +11,6 @@ export class AppComponent {
   items$: any;
   constructor( public AngularFireDatabase: AngularFireDatabase) {
     AngularFireDatabase.list('Products').valueChanges()
-      .subscribe(x => this.items$ = x)
-    
-     console.log ( this.items$);
-    
+      .subscribe(x => this.items$ = x)    
   }
 }

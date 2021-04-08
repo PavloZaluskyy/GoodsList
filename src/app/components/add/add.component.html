@@ -1,0 +1,82 @@
+<div class="dialogWindow" *ngIf="isCansel">
+    <h3>Do you really want to cancel?</h3>
+    <div class="buttons">
+        <button class="waves-effect waves-light btn-large" routerLink="/"> Yes</button>
+        <button class="waves-effect waves-light btn-large" routerLink="/add" (click)="cancel()"> No</button>
+    </div>
+    
+</div>
+<div class="row form">
+    <div class="form col s12">
+        <h2 class="title col s12 center">Add New Product</h2>
+
+        <div class="addImage col s12 m6">
+            <span>Load Image</span>
+            <input type="file" name="image" class="image" (change)="readThis($event)" [(ngModel)]="image" >
+            <img src="" #previewImg  alt="Image preview..." />
+        </div>
+
+        <div class="row col s12 m6 wrapper">
+            <div>
+                <div class="input-field col s12 m6">
+                    <input  id="name" type="text" [(ngModel)]="name" class="validate">
+                    <label for="name">Name</label>
+                    <span class="helper-text"
+                          *ngIf="errorField.name">
+                                  Invalid Name entered.
+                    </span>
+                  </div>
+                  <div class="input-field col s12 m6">
+                      <input id="count" type="number" [(ngModel)]="count" class="validate">
+                      <label for="count">Count</label>
+                      <span class="helper-text"
+                           *ngIf="errorField.count">
+                                  Invalid Count entered.
+                      </span>
+                  </div>
+            </div>
+            <div>
+                <div class="input-field col s4">
+                    <input id="width" type="number" [(ngModel)]="width" class="validate">
+                    <label for="width">Width</label>
+                    <span class="helper-text"
+                     *ngIf="errorField.width">
+                                Invalid Width entered.
+                  </span>
+                </div>
+                <div class="input-field col s4">
+                    <input  id="height" type="number" [(ngModel)]="height" class="validate">
+                    <label for="height">Height</label>
+                    <span class="helper-text"
+                     *ngIf="errorField.height">
+                                Invalid Height entered.
+                  </span>
+                </div>
+                <div class="input-field col s4">
+                    <input id="weight" type="number" [(ngModel)]="weight" class="validate">
+                    <label for="weight">Weight (g)</label>
+                    <span class="helper-text"
+                     *ngIf="errorField.weight">
+                                Invalid Weight entered.
+                  </span>
+                </div>
+            </div>
+            
+            <div class="input-field col s12">
+                <textarea id="textarea1" [(ngModel)]="description" class="materialize-textarea"></textarea>
+                <label for="textarea1">Description</label>
+                <span class="helper-text"
+                 *ngIf="errorField.description">
+                            Invalid Description entered.
+              </span>
+            </div>
+        </div>
+        <div class="buttons">
+            <input type="submit" class="send btn-large" routerLink="/" (click)="send()"  value="Send" />
+            <button class="waves-effect waves-light btn-large" (click)="cancel()"> Cancel</button>
+        </div>
+    </div> 
+
+</div>
+
+    

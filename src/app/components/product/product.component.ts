@@ -1,4 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Product } from 'src/app/shared/interface/product';
+import { DetailsService } from '../../shared/service/details.service'
 
 @Component({
   selector: 'app-product',
@@ -6,9 +8,12 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./product.component.scss']
 })
 export class ProductComponent implements OnInit {
-  @Input() product: any;
-  constructor() { }
-
+  @Input() product: Product;
+  @Output() deleteProduct = new EventEmitter<Product>();
+  constructor( private detailsService: DetailsService ) { }
+  delete(increased:Product){
+    this.deleteProduct.emit(increased);
+  }
   ngOnInit(): void {
   }
 
