@@ -1,0 +1,8 @@
+<div class="row col s12 card">
+    <p>{{comment.description}}</p>
+    <div class="dateAndBtn">
+        <span>{{comment.date | date:'hh:mm dd.MM.yyyy' }}</span>
+        <button class="waves-effect waves-light btn-large delete" (click)="delete(comment)" >Delete</button>
+    </div>
+    
+</div>

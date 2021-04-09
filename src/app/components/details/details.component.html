@@ -1,6 +1,6 @@
 <header >
     <button class="waves-effect waves-light btn-large" routerLink="/">BACK TO CATALOG</button>
-    <button class="waves-effect waves-light btn-large" >Edite</button>
+    <button class="waves-effect waves-light btn-large" routerLink="/edit" (click="edit()")>Edit</button>
 </header> 
 
 <div class="row about">
@@ -26,10 +26,28 @@
                   </tr> 
             </tbody>   
         </table>
-        <p>Count: {{product.count}}</p>
+        <p><span class="bold">Count:</span> {{product.count}}</p>
     </div>
 </div>
 <div class="comments">
-
+    <div class="addComment">
+        <div class="row">
+            <div class="form col s12">
+              <div class="row">
+                <div class="input-field col s12">
+                  <textarea id="textarea1" [(ngModel)]="newMessage" class="materialize-textarea"></textarea>
+                  <label for="textarea1">Your Comment</label>
+                </div>
+              </div>
+              <button class="waves-effect waves-light btn-large" (click)="addComment()" >Send</button>
+            </div>
+        </div>
+    </div>
+    <ul class="commentList">
+        <li *ngFor="let comment of comments">
+            <app-comment [comment]="comment" (deleteComment)="delete($event)"></app-comment>
+        </li>
+        
+    </ul>
 </div>
 

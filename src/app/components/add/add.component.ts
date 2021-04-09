@@ -45,7 +45,6 @@ export class AddComponent implements OnInit {
       this.height = '';
       this.weight = '';
       this.description = '';
-      console.log("Wrong");
       return false;
     }
     const id = new Date().getTime();
@@ -62,9 +61,6 @@ export class AddComponent implements OnInit {
       description: this.description
     }
     this.dataService.addProduct(newProduct);
-    console.log(newProduct);
-    
-
   }
 
   validationForm(){

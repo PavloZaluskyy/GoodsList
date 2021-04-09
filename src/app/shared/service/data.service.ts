@@ -13,10 +13,9 @@ export class DataService {
     this.items = this.AngularFireDatabase.list('/Products').valueChanges()
    }
   addProduct (newProduct: Product) {
-    console.log(newProduct);
     this.newProduct = newProduct;  
   }
-  getGoods(): any{
+  getGoods(): Observable<any>{
     return  this.items
   }
 

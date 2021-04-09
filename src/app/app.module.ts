@@ -13,11 +13,14 @@ import { GoodsListComponent } from './components/goods-list/goods-list.component
 import { ProductComponent } from './components/product/product.component';
 import { AddComponent } from './components/add/add.component';
 import { DetailsComponent } from './components/details/details.component';
+import { CommentComponent } from './components/comment/comment.component';
+import { EditComponent } from './components/edit/edit.component';
 
 const appRoutes: Routes =[
   { path: '', component: GoodsListComponent},
   { path: 'add', component: AddComponent},
   { path: 'details', component: DetailsComponent},
+  { path: 'edit', component: EditComponent},
   { path: '**', redirectTo: '/'}
 ];
 
@@ -27,7 +30,9 @@ const appRoutes: Routes =[
     GoodsListComponent,
     ProductComponent,
     AddComponent,
-    DetailsComponent
+    DetailsComponent,
+    CommentComponent,
+    EditComponent
   ],
   imports: [
     BrowserModule,
