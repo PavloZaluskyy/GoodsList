@@ -1,60 +1,58 @@
-.card{
+.card {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: stretch;
+  padding: 10px 0;
+  img {
+    width: 300px;
+    height: 300px;
+  }
+  .card-content {
     display: flex;
-    flex-wrap: wrap;
+    flex: 1;
+    flex-direction: column;
     justify-content: space-around;
-    align-items: stretch;
-    padding: 10px 0;
-   
-    img{width: 300px; height: 300px;}
-    .card-content{
-        display: flex;
-        flex: 1;
-        flex-direction: column;
-        justify-content: space-around;
-        .card-title{
-            font-weight: bold;
-            font-size: 1.6rem;
-        }
-        .details{
-            display: flex;
-            justify-content: space-between;
-        }
-        .buttons{
-            display: flex;
-            justify-content: space-between;
-            .btn-large{
-                width: 100%;
-                background-color: transparent;
-                color: #000;
-                border: 1px solid #000;
-                transition: all .9s ease;
-                &:hover{
-                    background-color: #000;
-                    color: #fff;
-                    border: 1px solid #fff;
-                }
-            }
-            .delete{
-                display: none;
-            }
-
-        }
-       
-
-        &:hover{
-            .buttons .btn-large{
-                width: 45%;
-                
-            }
-            .buttons .delete{
-                display: block;
-                background-color: rgb(105, 6, 6);
-                color: #fff;
-                &:hover{
-                    background-color: rgb(177, 10, 10);
-                    color: #000;
-                }
-            }
-        }
+    .card-title {
+      font-weight: bold;
+      font-size: 1.6rem;
     }
+    .details {
+      display: flex;
+      justify-content: space-between;
+    }
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      .btn-large {
+        width: 100%;
+        background-color: transparent;
+        color: #000;
+        border: 1px solid #000;
+        transition: all 0.9s ease;
+        &:hover {
+          background-color: #000;
+          color: #fff;
+          border: 1px solid #fff;
+        }
+      }
+      .delete {
+        display: none;
+      }
+    }
+    &:hover {
+      .buttons .btn-large {
+        width: 45%;
+      }
+      .buttons .delete {
+        display: block;
+        background-color: rgb(105, 6, 6);
+        color: #fff;
+        &:hover {
+          background-color: rgb(177, 10, 10);
+          color: #000;
+        }
+      }
+    }
+  }
 }

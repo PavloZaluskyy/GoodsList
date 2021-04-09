@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/shared/interface/product';
 import { DetailsService } from '../../shared/service/details.service';
 import { CommentsService } from '../../shared/service/comments.service';
-import {orderBy} from 'lodash';
+import { orderBy } from 'lodash';
 import { Coment } from '../../shared/interface/coment';
-import { EditProductService } from '../../shared/service/edit-product.service';
 
 @Component({
   selector: 'app-details',
@@ -16,18 +15,16 @@ export class DetailsComponent implements OnInit {
   product: Product;
   comments: Coment[] = [];
   newMessage: string = '';
-  isCommentField: boolean = false; 
+  isCommentField: boolean = false;
 
-  constructor(private detailsService: DetailsService, private commentsService: CommentsService, private editProductService: EditProductService ) { }
+  constructor(private detailsService: DetailsService, private commentsService: CommentsService) { }
 
-  delete(comment: Coment){
-    this.comments = this.comments.filter(com =>com.id !== comment.id)
+  delete(comment: Coment) {
+    this.comments = this.comments.filter(com => com.id !== comment.id)
   }
-  edit(){
-    this.editProductService.chooseProduct = this.product;
-  }
-  addComment(){
-    if(!this.newMessage.trim()){
+
+  addComment() {
+    if (!this.newMessage.trim()) {
       this.isCommentField = true;
       return false
     }
@@ -39,14 +36,13 @@ export class DetailsComponent implements OnInit {
     }
     this.comments.unshift(newComment)
     return this.newMessage;
-
   }
 
   ngOnInit(): void {
     this.product = this.detailsService.chooseProduct;
     this.commentsService.getComments()
       .subscribe(x => {
-        x = x.filter( comment => comment.productId === this.product.id);
+        x = x.filter(comment => comment.productId === this.product.id);
         x = orderBy(x, 'date', 'asc');
         this.comments = x;
       })

@@ -9,11 +9,13 @@ import { Coment } from '../interface/coment';
 export class CommentsService {
   items: Observable<any>;
   newComment: Coment;
-  constructor( private AngularFireDatabase: AngularFireDatabase ) {
-    this.items = this.AngularFireDatabase.list('/Comment').valueChanges()
-   }
 
-   getComments(): Observable<any>{
-    return  this.items;
+  constructor(private AngularFireDatabase: AngularFireDatabase) {
+    this.items = this.AngularFireDatabase.list('/Comment').valueChanges();
   }
+
+  getComments(): Observable<any> {
+    return this.items;
+  }
+
 }

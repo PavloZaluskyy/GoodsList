@@ -9,15 +9,17 @@ import { Product } from '../interface/product';
 export class DataService {
   items: Observable<any>;
   newProduct: Product;
-  constructor( private AngularFireDatabase: AngularFireDatabase ) {
-    this.items = this.AngularFireDatabase.list('/Products').valueChanges()
-   }
-  addProduct (newProduct: Product) {
-    this.newProduct = newProduct;  
-  }
-  getGoods(): Observable<any>{
-    return  this.items
+
+  constructor(private AngularFireDatabase: AngularFireDatabase) {
+    this.items = this.AngularFireDatabase.list('/Products').valueChanges();
   }
 
+  addProduct(newProduct: Product) {
+    this.newProduct = newProduct;
+  }
+
+  getGoods(): Observable<any> {
+    return this.items
+  }
 
 }

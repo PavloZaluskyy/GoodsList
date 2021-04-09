@@ -9,11 +9,13 @@ import { Coment } from '../../shared/interface/coment';
 export class CommentComponent implements OnInit {
   @Output() deleteComment = new EventEmitter<Coment>();
   @Input() comment: Coment;
-  
+
   constructor() { }
-  delete( increased: Coment){
+
+  delete(increased: Coment) {
     this.deleteComment.emit(increased);
   }
+  
   ngOnInit(): void {
   }
 
