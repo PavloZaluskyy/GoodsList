@@ -59,7 +59,7 @@ export class AddComponent implements OnInit {
       weight: this.weight,
       description: this.description
     };
-    this.dataService.addProduct(newProduct);
+    this.dataService.addGoods(newProduct);
   }
 
   validationForm() {

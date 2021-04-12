@@ -18,15 +18,18 @@ export class GoodsListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.dataService.getGoods()
-      .subscribe(x => {
-        x = orderBy(x, 'name', 'asc');
-        this.items = x;
-        if (this.dataService.newProduct) {
-          this.items.unshift(this.dataService.newProduct);
+      this.dataService.getProducts().subscribe(
+        data => {
+          data = orderBy(data, 'name, asc');
+          this.items = data;
+          if (this.dataService.newProduct) {
+            this.dataService.addGoods(this.dataService.newProduct)
+              .subscribe( item => this.items.unshift(item),
+                err => console.error(err.message)
+              )
+          }
         }
-        return this.items
-      });
+      )
   }
 
   onSort(event) {
