@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase } from '@angular/fire/database';
+
 import { Observable } from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import { Product } from '../interface/product';
@@ -14,19 +14,9 @@ export class DataService {
 
   static _url = 'https://inforcegoodslist-default-rtdb.firebaseio.com/Products';
 
-  constructor(private AngularFireDatabase: AngularFireDatabase,
-              private http: HttpClient) {
-    this.items = this.AngularFireDatabase.list('/Products').valueChanges();
-  }
+  constructor(private http: HttpClient) {}
 
-
-
-  getGoods(): Observable<any> {
-    return this.items
-  }
-
-
-  addGoods(product: Product):any{
+  addGoods(product: Product):Observable<Product>{
     this.newProduct = product;
     return this.http.post(`${DataService._url}.json`, product)
     .pipe(
@@ -35,7 +25,11 @@ export class DataService {
       })
     )
   }
-  getProducts(): any{
+
+  delete(product: Product): any{
+    return this.http.delete<void>(`${DataService._url}/${product.id}.json`)
+  }
+  getProducts(): Observable<any>{
     return this.http.get(`${DataService._url}.json`)
   }
 

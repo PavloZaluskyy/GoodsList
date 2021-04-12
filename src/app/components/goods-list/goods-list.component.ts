@@ -14,7 +14,11 @@ export class GoodsListComponent implements OnInit {
   constructor(private dataService: DataService) { }
   
   delete(product: Product) {
-    this.items = this.items.filter(item => item.id !== product.id);
+    this.dataService.delete(product)
+      .subscribe(() => {
+        this.items = this.items.filter(item => item.id !== product.id)
+      },
+      err => console.error(err.message))
   }
 
   ngOnInit(): void {
