@@ -37,14 +37,28 @@ export class DetailsComponent implements OnInit {
       description: this.newMessage,
       date: new Date().getTime()
     }
-    this.comments.unshift(newComment)
-    return this.newMessage;
+    this.commentsService.addComment(newComment)
+      .subscribe(
+        item => {
+          console.log(item)
+          this.comments.unshift(item);
+          this.commentsService.putComment(item)
+            .subscribe(
+              item => item,
+              err => console.error(err.message)
+            )
+        },
+        err => console.error(err.message)
+      )
+    // this.comments.unshift(newComment)
+    // return this.newMessage;
   }
 
   ngOnInit(): void {
     this.product = this.detailsService.chooseProduct;
     this.commentsService.getComments()
       .subscribe(comments => {
+        comments = orderBy(comments, 'date', 'desc');
         comments = comments.filter(item => item);
         comments = comments.filter(comment => comment.productId === this.product.id);
         console.log(comments);
