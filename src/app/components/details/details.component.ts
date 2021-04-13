@@ -20,7 +20,11 @@ export class DetailsComponent implements OnInit {
   constructor(private detailsService: DetailsService, private commentsService: CommentsService) { }
 
   delete(comment: Coment) {
-    this.comments = this.comments.filter(com => com.id !== comment.id)
+   this.commentsService.delete(comment)
+    .subscribe(
+      ()=> {this.comments = this.comments.filter(com => com.id !== comment.id),
+      err => console.error(err.message)}
+    )
   }
 
   addComment() {
@@ -29,7 +33,6 @@ export class DetailsComponent implements OnInit {
       return false
     }
     const newComment = {
-      id: new Date().getTime(),
       productId: this.product.id,
       description: this.newMessage,
       date: new Date().getTime()
@@ -41,10 +44,13 @@ export class DetailsComponent implements OnInit {
   ngOnInit(): void {
     this.product = this.detailsService.chooseProduct;
     this.commentsService.getComments()
-      .subscribe(x => {
-        x = x.filter(comment => comment.productId === this.product.id);
-        x = orderBy(x, 'date', 'asc');
-        this.comments = x;
+      .subscribe(comments => {
+        comments = comments.filter(item => item);
+        comments = comments.filter(comment => comment.productId === this.product.id);
+        console.log(comments);
+        
+        comments = orderBy(comments, 'date', 'desc');
+        this.comments = comments;
       })
   }
 
