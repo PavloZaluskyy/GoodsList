@@ -40,8 +40,8 @@ export class DetailsComponent implements OnInit {
     this.commentsService.addComment(newComment)
       .subscribe(
         item => {
-          console.log(item)
           this.comments.unshift(item);
+          this.newMessage = '';
           this.commentsService.putComment(item)
             .subscribe(
               item => item,
@@ -50,8 +50,6 @@ export class DetailsComponent implements OnInit {
         },
         err => console.error(err.message)
       )
-    // this.comments.unshift(newComment)
-    // return this.newMessage;
   }
 
   ngOnInit(): void {
@@ -60,9 +58,7 @@ export class DetailsComponent implements OnInit {
       .subscribe(comments => {
         comments = orderBy(comments, 'date', 'desc');
         comments = comments.filter(item => item);
-        comments = comments.filter(comment => comment.productId === this.product.id);
-        console.log(comments);
-        
+        comments = comments.filter(comment => comment.productId === this.product.id);    
         comments = orderBy(comments, 'date', 'desc');
         this.comments = comments;
       })
