@@ -20,11 +20,13 @@ export class DetailsComponent implements OnInit {
   constructor(private detailsService: DetailsService, private commentsService: CommentsService) { }
 
   delete(comment: Coment) {
-   this.commentsService.delete(comment)
-    .subscribe(
-      ()=> {this.comments = this.comments.filter(com => com.id !== comment.id),
-      err => console.error(err.message)}
-    )
+    this.commentsService.delete(comment)
+      .subscribe(
+        () => {
+          this.comments = this.comments.filter(com => com.id !== comment.id),
+          err => console.error(err.message)
+        }
+      )
   }
 
   addComment() {
@@ -58,7 +60,7 @@ export class DetailsComponent implements OnInit {
       .subscribe(comments => {
         comments = orderBy(comments, 'date', 'desc');
         comments = comments.filter(item => item);
-        comments = comments.filter(comment => comment.productId === this.product.id);    
+        comments = comments.filter(comment => comment.productId === this.product.id);
         comments = orderBy(comments, 'date', 'desc');
         this.comments = comments;
       })
