@@ -25,12 +25,22 @@ export class GoodsListComponent implements OnInit {
       this.dataService.getProducts().subscribe(
         data => {
           data = orderBy(data, 'name, asc');
-          this.items = data;
-          if (this.dataService.newProduct) {
+          data = data.filter(item => item);
+          this.items = orderBy(data, 'name, asc');
+        
+          if (this.dataService.newProduct) {          
             this.dataService.addGoods(this.dataService.newProduct)
-              .subscribe( item => this.items.unshift(item),
+              .subscribe( item => {
+                this.items.unshift(item)
+                this.dataService.putGoods(item)
+                  .subscribe(
+                    item => item,
+                    err => console.error(err.message)
+                    )
+              },
                 err => console.error(err.message)
               )
+            
           }
         }
       )

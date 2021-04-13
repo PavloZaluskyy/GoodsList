@@ -46,9 +46,8 @@ export class AddComponent implements OnInit {
       this.description = '';
       return false;
     }
-    const id = new Date().getTime();
+
     const newProduct: Product = {
-      id,
       name: this.name,
       count: this.count,
       imageUrl: this.previewImg.nativeElement.src,
